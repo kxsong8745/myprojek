@@ -1,12 +1,16 @@
 <?php
 
 class Kenderaan extends Admin_Controller{
-    public function listkend(){
-        $data = $this->db->get("EV_T01_KENDERAAN");
 
+    public function __construct(){
+        parent::__construct();
+        $this->load->model("vehicle_model");
+    }
+
+    public function listkend(){
+        $data = $this->vehicle_model->getAllKenderaan();
 
         $this->template->title("Senarai Kenderaan");
-
         $this->template->set("data", $data);
         $this->template->render();
 
@@ -26,7 +30,7 @@ class Kenderaan extends Admin_Controller{
             "T01_JENAMA" => $jenama,
             "T01_VARIAN" => $varian
         ];
-        $this->db->insert("EV_T01_KENDERAAN", $data_to_insert);
+        $this->vehicle_model->createVehicle($data_to_insert);
 
         redirect(module_url("kenderaan/listkend"));
     }
@@ -59,17 +63,13 @@ class Kenderaan extends Admin_Controller{
             "T01_JENAMA" => $jenama,
             "T01_VARIAN" => $varian
         ];
-        $this->db
-            ->where("T01_ID", $id_kenderaan)
-            ->update("EV_T01_KENDERAAN", $data_to_update);
+        $this->vehicle_model->saveVehicle($id_kenderaan, $data_to_update);
 
         redirect(module_url("kenderaan/listkend"));
     }
 
     public function delete($id_kenderaan,$id2=""){
-        $this->db
-            ->where("T01_ID", $id_kenderaan)
-            ->delete("EV_T01_KENDERAAN");
+        $this->vehicle_model->deleteVehicle($id_kenderaan);
 
         redirect(module_url("kenderaan/listkend"));
     }

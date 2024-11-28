@@ -596,3 +596,218 @@ ERROR - 2024-11-28 05:04:45 --> 404 Page Not Found: /index
 ERROR - 2024-11-28 05:04:45 --> 404 Page Not Found: /index
 ERROR - 2024-11-28 05:04:45 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
 ERROR - 2024-11-28 05:04:45 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:11:51 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:11:51 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:11:51 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:11:51 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:11:51 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:11:51 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:11:51 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:20:14 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:20:15 --> Severity: error --> Exception: Call to undefined method Vehicle_model::get() /var/www/html/public/application/modules/manage/models/Vehicle_model.php 4
+ERROR - 2024-11-28 05:21:05 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:21:05 --> Severity: Warning --> Undefined property: CI::$Vehicle_model /var/www/html/public/application/third_party/MX/Controller.php 60
+ERROR - 2024-11-28 05:21:05 --> Severity: error --> Exception: Call to a member function getAllKenderaan() on null /var/www/html/public/application/modules/manage/controllers/Kenderaan.php 7
+ERROR - 2024-11-28 05:21:43 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:21:43 --> Severity: error --> Exception: Call to undefined method Vehicle_model::get() /var/www/html/public/application/modules/manage/models/Vehicle_model.php 4
+ERROR - 2024-11-28 05:22:48 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:22:49 --> Could not find the language line "ccc_delete_confirm"
+ERROR - 2024-11-28 05:22:49 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:22:49 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:22:49 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:22:49 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:23:01 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:23:01 --> Could not find the language line "ccc_delete_confirm"
+ERROR - 2024-11-28 05:23:01 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:23:01 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:23:01 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:23:01 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:23:24 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:23:24 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:23:24 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:23:24 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:23:24 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:23:24 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:23:24 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:23:36 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:23:36 --> 404 Page Not Found: ../modules/manage/controllers/Kenderaan/index
+ERROR - 2024-11-28 05:23:50 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:23:50 --> Could not find the language line "ccc_delete_confirm"
+ERROR - 2024-11-28 05:23:50 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:23:50 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:23:50 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:23:50 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:23:50 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:23:51 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:26:39 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:26:40 --> Could not find the language line "ccc_delete_confirm"
+ERROR - 2024-11-28 05:26:40 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:26:40 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:26:40 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:26:40 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:26:40 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:26:40 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:26:42 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:26:42 --> Severity: error --> Exception: Unable to locate the model you have specified: Vehcile_model /core-ci/ci3/system/core/Loader.php 349
+ERROR - 2024-11-28 05:27:01 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:27:01 --> Severity: error --> Exception: Unable to locate the model you have specified: Vehcile_model /core-ci/ci3/system/core/Loader.php 349
+ERROR - 2024-11-28 05:27:36 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:27:36 --> Could not find the language line "ccc_delete_confirm"
+ERROR - 2024-11-28 05:27:36 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:27:36 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:27:36 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:27:36 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:27:36 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:27:36 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:27:37 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:27:37 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:27:37 --> Could not find the language line "ccc_delete_confirm"
+ERROR - 2024-11-28 05:27:37 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:27:37 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:27:37 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:27:37 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:27:38 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:27:38 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:29:11 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:29:11 --> Could not find the language line "ccc_delete_confirm"
+ERROR - 2024-11-28 05:29:11 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:29:11 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:29:11 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:29:11 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:29:11 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:29:11 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:29:17 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:29:17 --> Severity: Warning --> Undefined property: CI::$template /var/www/html/public/application/third_party/MX/Controller.php 60
+ERROR - 2024-11-28 05:29:17 --> Severity: error --> Exception: Call to a member function title() on null /var/www/html/public/application/modules/manage/controllers/Kenderaan.php 12
+ERROR - 2024-11-28 05:30:05 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:30:05 --> Severity: Warning --> Undefined property: CI::$template /var/www/html/public/application/third_party/MX/Controller.php 60
+ERROR - 2024-11-28 05:30:05 --> Severity: error --> Exception: Call to a member function title() on null /var/www/html/public/application/modules/manage/controllers/Kenderaan.php 12
+ERROR - 2024-11-28 05:31:38 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:31:38 --> Could not find the language line "ccc_delete_confirm"
+ERROR - 2024-11-28 05:31:38 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:31:38 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:31:38 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:31:38 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:31:38 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:31:38 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:31:43 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:31:43 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:31:43 --> Could not find the language line "ccc_delete_confirm"
+ERROR - 2024-11-28 05:31:43 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:31:43 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:31:43 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:31:43 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:31:43 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:31:44 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:31:46 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:31:46 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:31:46 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:31:46 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:31:46 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:31:46 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:31:46 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:32:18 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:32:18 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:32:19 --> Could not find the language line "ccc_delete_confirm"
+ERROR - 2024-11-28 05:32:19 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:32:19 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:32:19 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:32:19 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:32:19 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:32:19 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:32:30 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:32:30 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:32:30 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:32:30 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:32:30 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:32:30 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:32:31 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:32:36 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:32:36 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:32:37 --> Could not find the language line "ccc_delete_confirm"
+ERROR - 2024-11-28 05:32:37 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:32:37 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:32:37 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:32:37 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:32:37 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:32:37 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:32:38 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:32:38 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:32:38 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:32:38 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:32:38 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:32:38 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:32:38 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:33:02 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:33:03 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:33:03 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:33:03 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:33:03 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:33:03 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:33:03 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:33:21 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:33:21 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:33:21 --> Could not find the language line "ccc_delete_confirm"
+ERROR - 2024-11-28 05:33:21 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:33:21 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:33:21 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:33:21 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:33:21 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:33:21 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:36:12 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:36:12 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:36:12 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:36:12 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:36:12 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:36:13 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:36:13 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:39:25 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:39:25 --> Could not find the language line "ccc_delete_confirm"
+ERROR - 2024-11-28 05:39:25 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:39:25 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:39:25 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:39:25 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:39:26 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:39:26 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:39:31 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:39:31 --> Could not find the language line "ccc_delete_confirm"
+ERROR - 2024-11-28 05:39:31 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:39:31 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:39:31 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:39:31 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:39:31 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:39:31 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:39:34 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:39:34 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:39:34 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:39:34 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:39:34 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:39:34 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:39:34 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:39:54 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:39:54 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:39:54 --> Could not find the language line "ccc_delete_confirm"
+ERROR - 2024-11-28 05:39:54 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:39:54 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:39:54 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:39:54 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:39:54 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:39:54 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:42:01 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:42:01 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:42:01 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:42:01 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:42:01 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:42:01 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:42:01 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:42:05 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:42:05 --> Severity: error --> Exception: Call to undefined method Vehicle_model::updateVehicle() /var/www/html/public/application/modules/manage/controllers/Kenderaan.php 66
+ERROR - 2024-11-28 05:42:24 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:42:24 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:42:25 --> Could not find the language line "ccc_delete_confirm"
+ERROR - 2024-11-28 05:42:25 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:42:25 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:42:25 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:42:25 --> 404 Page Not Found: /index
+ERROR - 2024-11-28 05:42:25 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-28 05:42:25 --> 404 Page Not Found: /index
