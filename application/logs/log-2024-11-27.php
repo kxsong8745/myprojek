@@ -74,3 +74,31 @@ ERROR - 2024-11-27 05:17:48 --> Could not find the specified $config['composer_a
 ERROR - 2024-11-27 05:17:48 --> 404 Page Not Found: /index
 ERROR - 2024-11-27 05:17:48 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
 ERROR - 2024-11-27 05:17:48 --> 404 Page Not Found: /index
+ERROR - 2024-11-27 23:33:14 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-27 23:33:15 --> Severity: Warning --> oci_connect(): ORA-01033: ORACLE initialization or shutdown in progress /core-ci/ci3/system/database/drivers/oci8/oci8_driver.php 239
+ERROR - 2024-11-27 23:33:15 --> Unable to connect to the database
+ERROR - 2024-11-27 23:33:21 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-27 23:33:21 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-27 23:33:21 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-27 23:33:21 --> 404 Page Not Found: /index
+ERROR - 2024-11-27 23:33:21 --> 404 Page Not Found: /index
+ERROR - 2024-11-27 23:33:21 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-27 23:33:21 --> 404 Page Not Found: /index
+ERROR - 2024-11-27 23:33:33 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-27 23:33:33 --> Could not find the language line "cov_bank_kod"
+ERROR - 2024-11-27 23:33:33 --> Could not find the language line "ccc_delete_confirm"
+ERROR - 2024-11-27 23:33:33 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-27 23:33:33 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-27 23:33:33 --> 404 Page Not Found: /index
+ERROR - 2024-11-27 23:33:33 --> 404 Page Not Found: /index
+ERROR - 2024-11-27 23:33:33 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-27 23:33:33 --> 404 Page Not Found: /index
+ERROR - 2024-11-27 23:34:32 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-27 23:34:33 --> Could not find the language line "cov_bank_kod"
+ERROR - 2024-11-27 23:34:33 --> Could not find the language line "ccc_delete_confirm"
+ERROR - 2024-11-27 23:34:33 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-27 23:34:33 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-27 23:34:33 --> 404 Page Not Found: /index
+ERROR - 2024-11-27 23:34:33 --> 404 Page Not Found: /index
+ERROR - 2024-11-27 23:34:33 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-27 23:34:33 --> 404 Page Not Found: /index
