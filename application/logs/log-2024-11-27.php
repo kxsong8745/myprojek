@@ -102,3 +102,20 @@ ERROR - 2024-11-27 23:34:33 --> 404 Page Not Found: /index
 ERROR - 2024-11-27 23:34:33 --> 404 Page Not Found: /index
 ERROR - 2024-11-27 23:34:33 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
 ERROR - 2024-11-27 23:34:33 --> 404 Page Not Found: /index
+ERROR - 2024-11-27 23:53:20 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-27 23:53:20 --> Severity: Warning --> oci_execute(): ORA-00942: table or view does not exist /core-ci/ci3/system/database/drivers/oci8/oci8_driver.php 287
+ERROR - 2024-11-27 23:53:20 --> Query error: ORA-00942: table or view does not exist - Invalid query: SELECT *
+FROM "EV_T01_KENDERAAN"
+ERROR - 2024-11-27 23:54:17 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-27 23:54:17 --> Severity: Warning --> oci_execute(): ORA-00942: table or view does not exist /core-ci/ci3/system/database/drivers/oci8/oci8_driver.php 287
+ERROR - 2024-11-27 23:54:17 --> Query error: ORA-00942: table or view does not exist - Invalid query: SELECT *
+FROM "EV_T01_KENDERAAN"
+ERROR - 2024-11-27 23:56:25 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-27 23:56:25 --> Could not find the language line "cov_bank_kod"
+ERROR - 2024-11-27 23:56:25 --> Could not find the language line "ccc_delete_confirm"
+ERROR - 2024-11-27 23:56:26 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-27 23:56:26 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-27 23:56:26 --> 404 Page Not Found: /index
+ERROR - 2024-11-27 23:56:26 --> 404 Page Not Found: /index
+ERROR - 2024-11-27 23:56:26 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+ERROR - 2024-11-27 23:56:26 --> 404 Page Not Found: /index

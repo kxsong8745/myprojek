@@ -5,9 +5,11 @@
     $ENABLE_ADD  = TRUE;
     $ENABLE_MANAGE  = TRUE;
     $ENABLE_DELETE  = TRUE;
+
 ?>
+
 <?= form_open($this->uri->uri_string(),array('id'=>'frm_menu','name'=>'frm_menu')) ?>	
-	
+<a class = "btn btn-primary" href="<?php echo module_url("kenderaan/form_add")?>"> Add New Vehicle</a>
 <div class="card">
 	
         <div class="card-header">Senarai Permohonan Tuntutan  Benchfee
@@ -19,44 +21,35 @@
                 <thead>
                     <tr>
                         <th width="50">No.</th>
-						<th>No Matrik</th>
-						<th>Nama Pelajar</th>
-						<th>Tujuan</th>
-						<th>Tarikh Hantar</th>
-						
-						
-						
-<th><?=lang('cov_bank_kod')?> (RM)</th>
-
-
-<th>Lihat</th>
+						<th>Kod Kenderaan</th>
+						<th>Nama Kenderaan</th>
+                        <th>No Plat</th>
+						<th>Jenama</th>
+						<th>Varian</th>
+                        <th>Edit</th>
+						<th>Delete</th>
 
                         
                     </tr>
                 </thead>
                 <tbody>
-                 
+                <?php $i=0; foreach($data->result() as $row)  {?>
+
                   
 					<tr>
-					    <td>1</td>
-						<td>P4545</td>
-						<td>AZRUL AZHAN BIN AHMAD ALI</td>
-						<td>MENGAMBIL SAMPLE CORAL DI PULAU BIDONG</td>
-						<td>12/10/2024</td>
+					    <td><?php echo ++$i?></td>
+						<td><?php echo $row->T01_KOD_KENDERAAN ?></td>
+						<td><?php echo $row->T01_NAMA_KENDERAAN ?></td>
+                        <td><?php echo $row->T01_PLAT ?></td>
+						<td><?php echo $row->T01_JENAMA ?></td>
+						<td><?php echo $row->T01_VARIAN ?></td>
 						
-						<td>100.00</td>
-						<td><a class="btn btn-flat btn-primary" href="<?php echo module_url("tunt/detail")?>">Lihat</a></td>
+                        <td><a class="btn btn-flat btn-warning" href="<?php echo site_url("manage/kenderaan/form_edit/".$row->T01_ID)?>">Edit</a></td>
+						<td><a class="btn btn-flat btn-danger" href="<?php echo site_url("manage/kenderaan/delete/".$row->T01_ID)?>">Delete</a></td>
+                        
+                <?php } ?>                   
                     </tr>
-					<tr>
-					    <td>2</td>
-						<td>P4545</td>
-						<td>AZRUL AZHAN BIN AHMAD ALI</td>
-						<td>SAMPLING DI TASIK KENYIR</td>
-						<td>12/10/2024</td>
-						
-						<td>100.00</td>
-						<td><button class="btn btn-flat btn-primary">Lihat</button></td>
-                    </tr>
+					
                 </tbody>
 	  </table>
 	  
