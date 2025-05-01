@@ -61,11 +61,12 @@ $autoload['packages'] = array();
 //$autoload['libraries'] = array();
 // $autoload['libraries'] = array('database','Menu_generator');
 $autoload['libraries'] = array('jquery');
-$autoload['libraries'] = array('session');
+// $autoload['libraries'] = array('session');
 
 
 
 $autoload['libraries'] = array('form_validation');
+
 
 
 /*

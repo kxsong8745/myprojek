@@ -21,14 +21,15 @@
             <i class="ti ti-corner-up-left-double"></i>
             <span class="hide-menu">Kembali ke MyNemo</span>
         </a>
-        <a href="<?=base_url()?>sip/pelajar/carian" class="sidebar-link">
+        <!-- <a href="<?=base_url()?>sip/pelajar/carian" class="sidebar-link">
             <i class="ti ti-search"></i>
             <span class="hide-menu">Carian Pelajar</span>
-        </a>
+        </a> -->
 		<!-- ---------------------------------- -->
 		<!-- Menu Setup -->
 		<!-- ---------------------------------- -->
-		<li class="sidebar-item">
+
+		<!-- <li class="sidebar-item">
 		  <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
 			<iconify-icon icon="solar:document-linear" class="aside-icon"></iconify-icon>
 			<span class="hide-menu">Setup</span>
@@ -58,10 +59,78 @@
 				<span class="hide-menu">Setup Jenis Tuntutan</span>
 			  </a>
 			</li>
-			
+		  </ul>
+		</li> -->
+		<li class="sidebar-item">
+			  <a href="<?= base_url()?>ipss/user/loginForm" class="sidebar-link">
+				<iconify-icon icon="solar:stop-circle-line-duotone" class="sidebar-icon"></iconify-icon>
+				<span class="hide-menu">Login</span>
+			  </a>
+			</li>
+
+		<li class="sidebar-item">
+		  <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+			<iconify-icon icon="solar:document-linear" class="aside-icon"></iconify-icon>
+			<span class="hide-menu">Drug Inventory</span>
+		  </a>
+		  <ul aria-expanded="false" class="collapse first-level">
+			<li class="sidebar-item">
+			  <a href="<?= base_url()?>ipss/drug/listDrugs" class="sidebar-link">
+				<iconify-icon icon="solar:stop-circle-line-duotone" class="sidebar-icon"></iconify-icon>
+				<span class="hide-menu">Drug List</span>
+			  </a>
+			</li>
 		  </ul>
 		</li>
+
 		<li class="sidebar-item">
+		  <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+			<iconify-icon icon="solar:document-linear" class="aside-icon"></iconify-icon>
+			<span class="hide-menu">Open Shelf</span>
+		  </a>
+		  <ul aria-expanded="false" class="collapse first-level">
+			<li class="sidebar-item">
+			  <a href="<?= base_url()?>ipss/prepdisp/shelfList" class="sidebar-link">
+				<iconify-icon icon="solar:stop-circle-line-duotone" class="sidebar-icon"></iconify-icon>
+				<span class="hide-menu">Open Shelf List of Drugs</span>
+			  </a>
+			</li>
+		  </ul>
+		</li>
+
+		<li class="sidebar-item">
+		  <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+			<iconify-icon icon="solar:document-linear" class="aside-icon"></iconify-icon>
+			<span class="hide-menu">Drug Preparation and Dispensation</span>
+		  </a>
+		  <ul aria-expanded="false" class="collapse first-level">
+			<li class="sidebar-item">
+			  <a href="<?= base_url()?>ipss/prepdisp/prepDispList" class="sidebar-link">
+				<iconify-icon icon="solar:stop-circle-line-duotone" class="sidebar-icon"></iconify-icon>
+				<span class="hide-menu">Drug Prepared& Dispensed</span>
+			  </a>
+			</li>
+		  </ul>
+		</li>
+
+		<!-- <li class="sidebar-item">
+		  <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+			<iconify-icon icon="solar:document-linear" class="aside-icon"></iconify-icon>
+			<span class="hide-menu">Reporting</span>
+		  </a> -->
+		  <!-- <ul aria-expanded="false" class="collapse first-level">
+			<li class="sidebar-item">
+			  <a href="<?= base_url()?>ipss/drug/listDrugs" class="sidebar-link">
+				<iconify-icon icon="solar:stop-circle-line-duotone" class="sidebar-icon"></iconify-icon>
+				<span class="hide-menu">Drug List</span>
+			  </a>
+			</li>
+		  </ul> -->
+		<!-- </li> -->
+
+
+
+		<!-- <li class="sidebar-item">
 		  <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
 			<iconify-icon icon="solar:document-linear" class="aside-icon"></iconify-icon>
 			<span class="hide-menu">Admin</span>
@@ -172,8 +241,8 @@
 			</li>
 			
 		  </ul>
-		</li>
-		<li class="sidebar-item">
+		</li> -->
+		<!-- <li class="sidebar-item">
 		  <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
 			<iconify-icon icon="solar:document-linear" class="aside-icon"></iconify-icon>
 			<span class="hide-menu">Dekan</span>
@@ -194,8 +263,8 @@
 			
 			
 		  </ul>
-		</li>
-		<li class="sidebar-item">
+		</li> -->
+		<!-- <li class="sidebar-item">
 		  <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
 			<iconify-icon icon="solar:document-linear" class="aside-icon"></iconify-icon>
 			<span class="hide-menu">Pembayaran</span>
@@ -216,6 +285,6 @@
 			
 			
 		  </ul>
-		</li>
+		</li> -->
     </li>
 </ul>

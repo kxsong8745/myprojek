@@ -1,4 +1,4 @@
-<form method ="POST" action = "<?php echo module_url("kenderaan/add")?>">
+<form method ="GET" action = "<?php echo module_url("/kenderaan/add")?>">
 <div class="col-lg-12">
   <div class="card">
 	<div class="px-4 py-3 border-bottom">

@@ -85,3 +85,4 @@ $route['main'] = 'reg/sys/index';
 $route['update'] = 'reg/profil/create';
 $route['pg_direct'] = 'rhm/ccc/index'; //direct
 $route['pg_return'] = 'kursusv1/bayar/view_transaction'; //indirect
+

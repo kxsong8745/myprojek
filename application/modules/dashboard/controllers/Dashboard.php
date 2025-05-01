@@ -32,11 +32,31 @@ class Dashboard extends Admin_Controller {
     }
 
     
-	
+	//session
 	function index()
 	{		
-		echo "Welcome to Dashboard Controller";
-		//echo "<br>sess=>".$_SESSION["uid"];
+		echo "Welcome to Dashboard Controller <br><br>";
+
+        $id_staf = strtoupper($_SESSION['UID']);
+        $nama = strtoupper($_SESSION['STAFF']);
+
+		echo "<br>Login as =>".$id_staf;
+        echo "<br>Name as =>".$nama;
+
+        // print_r ($_SESSION);
+        $created_by = $_SESSION["UID"];
+        // $data = [
+        //     "T01_CREATED_BY" => $created_by,
+        //     "T01_STATUS" => 1
+        // ];
+    
+        // $this->mymodel->insert($data);
+        $logged_user =
+            $this->db
+            ->where("ID_WARGA", $created_by)
+            ->get("MYUSER") ->row();
+
+        echo "<br>Query name from tables =>".$logged_user->NAMA;
 	}
 
 	function baki()
@@ -443,5 +463,23 @@ class Dashboard extends Admin_Controller {
 			fputcsv($fp, get_object_vars($fields));
 		}
 	}
+
+    public function managepdf(){
+        $this->load->library("m_pdf");
+
+        $data = "<table border ='1' cellpadding= '0'>
+                <tr>
+                    <th>NO</th>
+                    <th>Name</th>
+                </tr>
+                <tr>
+                    <th>NO</th>
+                    <th>Name</th>
+                </tr>
+                </table>";
+
+                $this->m_pdf->pdf->WriteHTML($data);
+                $this->m_pdf->pdf->Output();
+    }
 }
 ?>
