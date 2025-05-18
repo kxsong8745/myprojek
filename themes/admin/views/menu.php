@@ -105,9 +105,34 @@
 		  </a>
 		  <ul aria-expanded="false" class="collapse first-level">
 			<li class="sidebar-item">
-			  <a href="<?= base_url()?>ipss/prepdisp/prepDispList" class="sidebar-link">
+			  <a href="<?= base_url()?>ipss/prepdisp/prepList" class="sidebar-link">
 				<iconify-icon icon="solar:stop-circle-line-duotone" class="sidebar-icon"></iconify-icon>
-				<span class="hide-menu">Drug Prepared& Dispensed</span>
+				<span class="hide-menu">Drug Preparation</span>
+			  </a>
+			  <a href="<?= base_url()?>ipss/prepdisp/dispList" class="sidebar-link">
+				<iconify-icon icon="solar:stop-circle-line-duotone" class="sidebar-icon"></iconify-icon>
+				<span class="hide-menu">Drug Dispensation</span>
+			  </a>
+			</li>
+		  </ul>
+		</li>
+
+		<li class="sidebar-item">
+		  <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+			<iconify-icon icon="solar:document-linear" class="aside-icon"></iconify-icon>
+			<span class="hide-menu">Alerts</span>
+		  </a>
+		  <ul aria-expanded="false" class="collapse first-level">
+			<li class="sidebar-item">
+			  <a href="<?= base_url()?>ipss/alert/stockAlert" class="sidebar-link">
+				<iconify-icon icon="solar:stop-circle-line-duotone" class="sidebar-icon"></iconify-icon>
+				<span class="hide-menu">Drug Stock Alert</span>
+			  </a>
+			</li>
+			<li class="sidebar-item">
+			  <a href="<?= base_url()?>ipss/alert/expiryAlert" class="sidebar-link">
+				<iconify-icon icon="solar:stop-circle-line-duotone" class="sidebar-icon"></iconify-icon>
+				<span class="hide-menu">Drug Expiry Alert</span>
 			  </a>
 			</li>
 		  </ul>

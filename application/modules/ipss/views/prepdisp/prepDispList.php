@@ -3,8 +3,14 @@
         <h4>Preparation and Dispensation Records</h4>
     </div>
     <div class="card-body">
-        <a class="btn btn-primary mb-3" href="<?= module_url('prepdisp/prepDispForm') ?>">Prepare and Dispense New Drug</a>
-        <a class="btn btn-success" href="<?= module_url('prepdisp/dispenseBarcode') ?>"><i class="fa fa-barcode"></i> Scan Barcode to Dispense Drug</a>
+        <div class="d-flex flex-wrap gap-2 mb-3">
+            <a class="btn btn-primary" href="<?= module_url('prepdisp/prepDispForm') ?>">
+                Prepare and Dispense New Drug
+            </a>
+            <a class="btn btn-success" href="<?= module_url('prepdisp/dispenseBarcode') ?>">
+                <i class="fa fa-barcode"></i> Scan Barcode to Dispense Drug
+            </a>
+        </div>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -14,7 +20,7 @@
                     <th>Trade Name</th>
                     <th>Batch ID</th>
                     <th>Units Dispensed</th>
-                    <th>Dispensed Date</th>
+                    <th>Date and Time Recorded</th>
                     <th>Batch Expiry Date</th>
                 </tr>
             </thead>
@@ -28,16 +34,26 @@
                             <td><?= $record->trade_name ?></td>
                             <td><?= $record->T05_BATCH_ID ?></td>
                             <td><?= $record->T05_DISP_UNITS ?></td>
-                            <td><?= $record->T05_DISP_DATE ?></td>
-                            <td><?= $record->T02_EXP_DATE ?></td>
+                            <td><?= date('d-m-Y H:i', strtotime($record->T05_DISP_DATE)) ?></td>
+                            <td><?= date('d-M-Y', strtotime($record->T02_EXP_DATE)) ?></td>
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
                     <tr>
-                        <td colspan="8" class="text-center">No preparation and dispensation records found</td>
+                        <td colspan="9" class="text-center">No preparation and dispensation records found</td>
                     </tr>
                 <?php endif; ?>
             </tbody>
         </table>
     </div>
 </div>
+
+<!-- <script>
+    $(document).ready(function () {
+        $('.datatable').DataTable({
+            "order": [[0, "asc"], [3, "asc"]],
+            "responsive": true,
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+        });
+    });
+</script> -->

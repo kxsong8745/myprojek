@@ -6,7 +6,7 @@ class Drug extends Admin_Controller
     public function __construct()
     {
         parent::__construct();
-        session_start(); 
+        session_start();
         $this->load->model("drug_model");
         // session_start();
     }
@@ -35,18 +35,18 @@ class Drug extends Admin_Controller
 
     public function getExistingDrugs()
     {
-        // Load the model
+        //Load the model
         $this->load->model('drug_model');
 
-        // Fetch existing drugs and trade names
+        //Fetch existing drugs and trade names
         $existingDrugs = $this->drug_model->getDrugRecord();
 
-        // Return as JSON
+        //Return as JSON for JavaScript in view
         echo json_encode($existingDrugs);
     }
 
     public function drugForm_update($drugId)
-    {
+    {   //drugfrom view function to update the drug
         $drug = $this->db
             ->where("T01_DRUG_ID", $drugId)
             ->get("IPSS_T01_DRUG")
@@ -55,49 +55,7 @@ class Drug extends Admin_Controller
         $this->template->set("drug", $drug);
         $this->template->render();
     }
-
-
-    // Form to add a batch for a specific drug
-    public function formAddBatch($drugId)
-    {
-        $drug = $this->drug_model->getDrugById($drugId);
-        $tenderers = $this->drug_model->getAllTenderers();
-
-        // Set the data for the view
-        $this->template->set('drug', $drug);
-        $this->template->set('tenderers', $tenderers);
-        $this->template->title("Add Batch for Drug: " . $drug->T01_DRUGS);
-        $this->template->render();
-    }
-
-    public function formUpdateBatch($batchId)
-    {
-        $batch = $this->db
-            ->select('IPSS_T02_DBATCH.*, IPSS_T01_DRUG.T01_DRUGS, IPSS_T01_DRUG.T01_TRADE_NAME, IPSS_T03_TENDERER.T03_TEND_NAME')
-            ->from('IPSS_T02_DBATCH')
-            ->join('IPSS_T01_DRUG', 'IPSS_T02_DBATCH.T02_DRUG_ID = IPSS_T01_DRUG.T01_DRUG_ID', 'left')
-            ->join('IPSS_T03_TENDERER', 'IPSS_T02_DBATCH.T02_TENDERER_ID = IPSS_T03_TENDERER.T03_TEND_ID', 'left')
-            ->where('IPSS_T02_DBATCH.T02_BATCH_ID', $batchId)
-            ->get()
-            ->row();
-
-        if (!$batch) {
-            $this->session->set_flashdata('error', 'Batch not found.');
-            redirect(module_url("drug/listDrugs"));
-            return;
-        }
-
-        $tenderers = $this->drug_model->getAllTenderers();
-
-        // Set batch data for the view
-        $this->template->set('batch', $batch);
-        $this->template->set('tenderers', $tenderers);
-        $this->template->title("Update Batch for Drug: " . $batch->T01_DRUGS . " (" . $batch->T01_TRADE_NAME . ")");
-        $this->template->render();
-    }
-
-
-    // Add new drug (without the batch)
+    //add new drug record
     public function addDrug()
     {
         $drugs = $this->input->post("drugs");
@@ -155,15 +113,50 @@ class Drug extends Admin_Controller
         }
     }
 
-    public function addTenderer()
+    //From here on the controller function for drug batches
+    //Form to add a drug batch 
+    public function formAddBatch($drugId)
     {
-        //ToDo: Fucntion for setting up tenderer
+        $drug = $this->drug_model->getDrugById($drugId);
+        $tenderers = $this->drug_model->getAllTenderers();
+
+        // Set the data for the view
+        $this->template->set('drug', $drug);
+        $this->template->set('tenderers', $tenderers);
+        $this->template->title("Add Batch for Drug: " . $drug->T01_DRUGS);
+        $this->template->render();
     }
 
-    // Insert batch data for the drug
+    //Form to update a drug batch
+    public function formUpdateBatch($batchId)
+    {
+        $batch = $this->db
+            ->select('IPSS_T02_DBATCH.*, IPSS_T01_DRUG.T01_DRUGS, IPSS_T01_DRUG.T01_TRADE_NAME, IPSS_T03_TENDERER.T03_TEND_NAME')
+            ->from('IPSS_T02_DBATCH')
+            ->join('IPSS_T01_DRUG', 'IPSS_T02_DBATCH.T02_DRUG_ID = IPSS_T01_DRUG.T01_DRUG_ID', 'left')
+            ->join('IPSS_T03_TENDERER', 'IPSS_T02_DBATCH.T02_TENDERER_ID = IPSS_T03_TENDERER.T03_TEND_ID', 'left')
+            ->where('IPSS_T02_DBATCH.T02_BATCH_ID', $batchId)
+            ->get()
+            ->row();
+
+        if (!$batch) {
+            $this->session->set_flashdata('error', 'Batch not found.');
+            redirect(module_url("drug/listDrugs"));
+            return;
+        }
+
+        $tenderers = $this->drug_model->getAllTenderers();
+
+        // Set batch data for the view
+        $this->template->set('batch', $batch);
+        $this->template->set('tenderers', $tenderers);
+        $this->template->title("Update Batch for Drug: " . $batch->T01_DRUGS . " (" . $batch->T01_TRADE_NAME . ")");
+        $this->template->render();
+    }
+
+    //add batch data insertion
     public function addBatch($drugId)
     {
-        //ToDo: Tenderer needs to be setup and used as a foreign key here instead of setting here
         $tendererId = $this->input->post("tendererId");
         $packageQty = $this->input->post("packageQty");
         $totalPricePackageQty = $this->input->post("totalPricePackageQty");
@@ -173,11 +166,13 @@ class Drug extends Admin_Controller
         $pricePerUnit = $this->input->post("pricePerUnit");
         $manufacturedDate = $this->input->post("manufacturedDate");
         $expiryDate = $this->input->post("expiryDate");
+        $recordDate = $this->input->post("recordDate");
         $barcodeNum = $this->input->post("barcodeNum");
 
         try {
             $mfgDate = new DateTime($manufacturedDate);
             $expDate = new DateTime($expiryDate);
+            $recDate = new DateTime($recordDate);
 
             // Check if manufactured date is before expiry date
             if ($mfgDate >= $expDate) {
@@ -186,9 +181,10 @@ class Drug extends Admin_Controller
                 return;
             }
 
-            // Format the dates correctly for database insertion
+            // Set date format of d-m-y for insertion from html view
             $formattedMfgDate = $mfgDate->format('d-M-Y');
             $formattedExpDate = $expDate->format('d-M-Y');
+            $formattedRecDate = $recDate->format('d-M-Y');
 
             // Prepare batch data for insertion
             $data_to_batch = [
@@ -202,6 +198,7 @@ class Drug extends Admin_Controller
                 "T02_PRICE_PER_UNIT" => $pricePerUnit,
                 "T02_MFD_DATE" => $formattedMfgDate,
                 "T02_EXP_DATE" => $formattedExpDate,
+                "T02_RECORD_DATE" => $formattedRecDate,
                 "T02_BARCODE_NUM" => $barcodeNum
             ];
 
@@ -221,7 +218,7 @@ class Drug extends Admin_Controller
         }
     }
 
-    // Update batch details
+    //update batch data
     public function updateBatch($batchId)
     {
         $tendererId = $this->input->post("tendererId");
@@ -233,11 +230,13 @@ class Drug extends Admin_Controller
         $pricePerUnit = $this->input->post("pricePerUnit");
         $manufacturedDate = $this->input->post("manufacturedDate");
         $expiryDate = $this->input->post("expiryDate");
+        $recordDate = $this->input->post("recordDate");
         $barcodeNum = $this->input->post("barcodeNum");
 
         try {
             $mfgDate = new DateTime($manufacturedDate);
             $expDate = new DateTime($expiryDate);
+            $recDate = new DateTime($recordDate);
 
             // Validate dates
             if ($mfgDate >= $expDate) {
@@ -257,6 +256,7 @@ class Drug extends Admin_Controller
                 "T02_PRICE_PER_UNIT" => $pricePerUnit,
                 "T02_MFD_DATE" => $mfgDate->format('d-M-Y'),
                 "T02_EXP_DATE" => $expDate->format('d-M-Y'),
+                "T02_RECORD_DATE" => $recDate->format('d-M-Y'),
                 "T02_BARCODE_NUM" => $barcodeNum
             ];
 
@@ -270,18 +270,17 @@ class Drug extends Admin_Controller
         }
     }
 
+    //viewBatches view function
     public function viewBatches($drugId)
     {
-        // Retrieve the drug details
+        // Retrieve the drug details and batch
         $drug = $this->drug_model->getDrugById($drugId);
-
-        // Retrieve batches for the given drug
         $batches = $this->drug_model->getBatchesByDrugId($drugId);
 
-        // Prepare data to pass to the view
+        // Prepare data to pass to the view (drug deatails and list of batch of the drug)
         $data = [
-            'drug' => $drug,      // Drug details
-            'batches' => $batches // List of batches for this drug
+            'drug' => $drug,     
+            'batches' => $batches
         ];
 
         // Set the data for the view
@@ -290,7 +289,7 @@ class Drug extends Admin_Controller
         $this->template->render();
     }
 
-    //batch delete
+    //deleting a drug batch
     public function deleteBatch($batchId)
     {
         try {
@@ -305,52 +304,8 @@ class Drug extends Admin_Controller
         }
     }
 
-    public function searchByBarcode()
-    {
-        #ToDo: make a function to search for batch by scanning barcode
-    }
-
-    public function toOuterShelf()
-    {
-        #ToDo: make a function that post the drugs to outer shelf for preparation and dispensation
-    }
-
+    // public function addTenderer()
+    // {
+    //     //ToDo: Fucntion for setting up tenderer
+    // }
 }
-
-// public function updateDrug($drugId){
-//     $drugs = $this->input->post("drugs");
-//     $tradeName = $this->input->post("tradeName");
-//     $tenderer = $this->input->post("tenderer");
-//     $packageQty = $this->input->post("packageQty");
-//     $totalPricePackageQty = $this->input->post("totalPricePackageQty");
-//     $unitPerPackage = $this->input->post("unitPerPackage");
-//     $totalUnits = $this->input->post("totalUnits");
-//     $poNo = $this->input->post("poNo");
-//     $pricePerUnit = $this->input->post("pricePerUnit");
-
-//     try{
-//         $data_to_update = [
-//             "T01_DRUGS" => $drugs,
-//             "T01_TRADE_NAME" => $tradeName,
-//             "T01_TENDERER" => $tenderer,
-//             "T01_PACKAGE_QUANTITY" => $packageQty,
-//             "T01_TP_PACKAGE_QUANTITY"=>$totalPricePackageQty,
-//             "T01_UNIT_PER_PACKAGE"=>$unitPerPackage,
-//             "T01_TOTAL_UNITS"=>$totalUnits,
-//             "T01_PO_NO"=>$poNo,
-//             "T01_PRICE_PER_UNIT" => $pricePerUnit
-//         ];
-
-//         $this->drug_model->updateDrug($drugId, $data_to_update);
-//         redirect(module_url("drug/listDrugs"));
-
-//     }catch (Exception $e){
-//         redirect(module_url("drug/drugForm_update/" . $drugId));
-//     }
-// }
-
-// public function delete($drugId){
-//     $this->drug_model->deleteDrug($drugId);
-//     redirect(module_url("drug/listDrugs"));
-// }
-//}

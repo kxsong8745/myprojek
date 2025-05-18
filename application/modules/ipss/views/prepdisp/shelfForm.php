@@ -42,9 +42,9 @@
 
             <!-- Date (Automatically set to today) -->
             <div class="form-group">
-                <label for="shelf_date">Date</label>
-                <input type="date" name="shelf_date" id="shelf_date" class="form-control form-control-sm"
-                    value="<?= date('Y-m-d') ?>" readonly>
+                <label for="shelf_date">Date Added</label>
+                <input type="date" class="form-control" id="shelf_date" name="shelf_date" value="<?= date('Y-m-d') ?>">
+                <small class="form-text text-muted">Date when drug is moved to open shelf (defaults to today)</small>
             </div>
 
             <!-- Submit -->

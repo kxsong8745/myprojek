@@ -19,14 +19,12 @@
                 <select name="open_id" id="open_id" class="form-control form-control-sm" required>
                     <option value="">Select Drug</option>
                     <?php foreach ($drugs_on_shelf as $item): ?>
-                        <option value="<?= $item->T04_OPEN_ID ?>" 
-                                data-units="<?= $item->T04_TOTAL_UNITS ?>"
-                                data-drug="<?= $item->drug_name ?>"
-                                data-trade="<?= $item->trade_name ?>"
-                                data-exp="<?= $item->T02_EXP_DATE ?>">
-                            <?= $item->drug_name ?> (<?= $item->trade_name ?>) - 
-                            Batch: <?= $item->T04_BATCH_ID ?> - 
-                            Available: <?= $item->T04_TOTAL_UNITS ?> units - 
+                        <option value="<?= $item->T04_OPEN_ID ?>" data-units="<?= $item->T04_TOTAL_UNITS ?>"
+                            data-drug="<?= $item->drug_name ?>" data-trade="<?= $item->trade_name ?>"
+                            data-exp="<?= $item->T02_EXP_DATE ?>">
+                            <?= $item->drug_name ?> (<?= $item->trade_name ?>) -
+                            Batch: <?= $item->T04_BATCH_ID ?> -
+                            Available: <?= $item->T04_TOTAL_UNITS ?> units -
                             Expires: <?= $item->T02_EXP_DATE ?>
                         </option>
                     <?php endforeach; ?>
@@ -49,15 +47,17 @@
             <!-- Units to Dispense -->
             <div class="form-group">
                 <label for="disp_units">Units to Dispense</label>
-                <input type="number" name="disp_units" id="disp_units" class="form-control form-control-sm" min="1" required>
+                <input type="number" name="disp_units" id="disp_units" class="form-control form-control-sm" min="1"
+                    required>
             </div>
 
-            <!-- Date (Automatically set to today) -->
+            <!-- Dispense Date and Time -->
             <div class="form-group">
-                <label for="disp_date">Date</label>
-                <input type="date" name="disp_date" id="disp_date" class="form-control form-control-sm"
-                    value="<?= date('Y-m-d') ?>" readonly>
+                <label for="disp_date">Dispense Date and Time</label>
+                <input type="datetime-local" name="disp_date" id="disp_date" class="form-control form-control-sm"
+                    required>
             </div>
+
 
             <!-- Submit -->
             <button type="submit" class="btn btn-primary btn-sm btn-block">Prepare and Dispense</button>
@@ -68,9 +68,9 @@
 
 <script>
     // Show drug details when a drug is selected
-    $('#open_id').change(function() {
+    $('#open_id').change(function () {
         const selectedOption = $(this).find('option:selected');
-        
+
         if (selectedOption.val()) {
             // Display the selected drug details
             $('#detail-drug').text(selectedOption.data('drug'));
@@ -78,7 +78,7 @@
             $('#detail-units').text(selectedOption.data('units'));
             $('#detail-expiry').text(selectedOption.data('exp'));
             $('#drug-details').removeClass('d-none');
-            
+
             // Reset the dispense units field
             $('#disp_units').val('');
         } else {
@@ -88,7 +88,7 @@
     });
 
     // Validate dispense units against available units
-    $('#disp_units').on('input', function() {
+    $('#disp_units').on('input', function () {
         const selectedOption = $('#open_id option:selected');
         const availableUnits = parseInt(selectedOption.data('units') || 0);
         const enteredUnits = parseInt($(this).val());
@@ -99,5 +99,3 @@
         }
     });
 </script>
-
-

@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-center">
     <div class="card" style="width: 50%;">
         <div class="card-header text-center">
-            <h5>Scan Barcode to Dispense Drug</h5>
+            <h5>Scan Barcode to Prepare Drug</h5>
         </div>
         <div class="card-body">
             <div class="form-group">
@@ -19,14 +19,14 @@
 
             <div id="barcode-result" class="mt-4"></div>
 
-            <div id="dispense-form-container" class="mt-4" style="display: none;">
-                <?= form_open(module_url('prepdisp/prepareDispense'), array('id' => 'dispenseForm', 'class' => 'needs-validation', 'novalidate' => true)) ?>
+            <div id="prepare-form-container" class="mt-4" style="display: none;">
+                <?= form_open(module_url('prepdisp/prepare'), array('id' => 'prepareForm', 'class' => 'needs-validation', 'novalidate' => true)) ?>
 
                 <input type="hidden" name="open_id" id="open_id">
 
                 <div class="card">
                     <div class="card-header bg-light">
-                        <h6>Dispense Drug</h6>
+                        <h6>Prepare Drug</h6>
                     </div>
                     <div class="card-body">
                         <!-- Display staff name -->
@@ -34,30 +34,25 @@
 
                         <!-- Units -->
                         <div class="form-group">
-                            <label for="disp_units">Units to Dispense</label>
-                            <input type="number" name="disp_units" id="disp_units" class="form-control" min="1"
+                            <label for="prep_units">Units to Prepare</label>
+                            <input type="number" name="prep_units" id="prep_units" class="form-control" min="1"
                                 required>
-                            <small class="form-text text-muted">Enter the number of units to dispense</small>
+                            <small class="form-text text-muted">Enter the number of units to prepare</small>
                         </div>
-
-                        <!-- Dispense Date and Time -->
-                        <div class="form-group">
-                            <label for="disp_date">Dispense Date and Time</label>
-                            <input type="datetime-local" name="disp_date" id="disp_date"
-                                class="form-control form-control-sm" required>
-                        </div>
-
 
                         <!-- Submit -->
-                        <button type="submit" class="btn btn-primary btn-block">Dispense Drug</button>
+                        <button type="submit" class="btn btn-primary btn-block">Prepare Drug</button>
                     </div>
                 </div>
                 <?= form_close() ?>
             </div>
 
             <div class="mt-3">
-                <a href="<?= module_url('prepdisp/prepDispList') ?>" class="btn btn-secondary btn-sm">
-                    <i class="fa fa-arrow-left"></i> Back to Dispensation List
+                <a href="<?= module_url('prepdisp/prepForm') ?>" class="btn btn-info btn-sm">
+                    <i class="fa fa-list-alt"></i> Regular Preparation Form
+                </a>
+                <a href="<?= module_url('prepdisp/prepList') ?>" class="btn btn-secondary btn-sm">
+                    <i class="fa fa-list"></i> View Preparation List
                 </a>
             </div>
         </div>
@@ -65,7 +60,6 @@
 </div>
 
 <script>
-
     $(document).ready(function () {
         // Auto-focus on barcode field when page loads
         $('#barcode').focus();
@@ -80,7 +74,7 @@
 
             // Show loading indicator
             $('#barcode-result').html('<div class="text-center"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></div>');
-            $('#dispense-form-container').hide();
+            $('#prepare-form-container').hide();
 
             $.ajax({
                 url: '<?= module_url("prepdisp/searchOpenShelfByBarcode") ?>',
@@ -113,7 +107,7 @@
                     // Check if we have any open shelf items
                     if (response.open_shelf_items.length > 0) {
                         $.each(response.open_shelf_items, function (index, item) {
-                            // Format the date properly or display placeholder if missing
+                            // Format the date properly or use placeholder if missing
                             let formattedDate = 'N/A';
 
                             // Debug: Log the raw date value to console
@@ -162,20 +156,10 @@
 
                         // Populate the form with the selected open shelf item
                         $('#open_id').val(openId);
-                        $('#disp_units').attr('max', availableUnits);
+                        $('#prep_units').attr('max', availableUnits);
 
-                        // Set default date and time to current date and time
-                        const now = new Date();
-                        const year = now.getFullYear();
-                        const month = String(now.getMonth() + 1).padStart(2, '0');
-                        const day = String(now.getDate()).padStart(2, '0');
-                        const hours = String(now.getHours()).padStart(2, '0');
-                        const minutes = String(now.getMinutes()).padStart(2, '0');
-
-                        $('#disp_date').val(`${year}-${month}-${day}T${hours}:${minutes}`);
-
-                        $('#dispense-form-container').show();
-                        $('#disp_units').focus();
+                        $('#prepare-form-container').show();
+                        $('#prep_units').focus();
                     });
                 },
                 error: function () {
@@ -192,8 +176,8 @@
             }
         });
 
-        // Validate dispensation units against available shelf units
-        $('#disp_units').on('input', function () {
+        // Validate preparation units against available shelf units
+        $('#prep_units').on('input', function () {
             const max = parseInt($(this).attr('max') || 0);
             const entered = parseInt($(this).val() || 0);
 

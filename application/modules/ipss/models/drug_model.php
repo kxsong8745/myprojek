@@ -1,47 +1,35 @@
 <?php
 
 class Drug_model extends CI_Model {
-
     // Retrieve all drugs from the database
     function getAllDrugs() {
         $query = $this->db->get("IPSS_T01_DRUG");
         return $query->result(); // Returns all drugs
     }
-
     function getDrugRecord(){
-        $query = $this->db->select('T01_DRUGS, T01_TRADE_NAME')->get('IPSS_T01_DRUG');
+        $query = $this->db->select('T01_DRUG_ID, T01_DRUGS, T01_TRADE_NAME')->get('IPSS_T01_DRUG');
         return $query->result_array(); 
     }
 
+    //Search the drug by name
     public function searchDrugs($search) {
-        $query = $this->db->query("
-            SELECT * 
-            FROM IPSS_T01_DRUG 
-            WHERE LOWER(T01_DRUGS) LIKE ?", 
-            ['%' . strtolower($search) . '%']
-        );
-
+        $query = $this->db->query("SELECT * FROM IPSS_T01_DRUG WHERE LOWER(T01_DRUGS) LIKE ?", ['%' . strtolower($search) . '%']);
         return $query->result();
     }
 
+    //Search the batch of drug by its barcode
     public function searchBarcode($search){
-        $query = $this->db->query("
-            SELECT * 
-            FROM IPSS_T02_DBATCH 
-            WHERE LOWER(T02_BARCODE_NUM) LIKE ?", 
-            ['%' . strtolower($search) . '%']
-        );
-
+        $query = $this->db->query("SELECT * FROM IPSS_T02_DBATCH WHERE LOWER(T02_BARCODE_NUM) LIKE ?", ['%' . strtolower($search) . '%']);
         return $query->result();
-
     }
  
+    //Get drug details
     public function getDrugByDetails($drugs, $tradeName, $minStock) {
         $this->db->where('T01_DRUGS', $drugs);
         $this->db->where('T01_TRADE_NAME', $tradeName);
         $this->db->where('T01_MIN_STOCK', $minStock);
         $query = $this->db->get('IPSS_T01_DRUG');
-        return $query->row_array(); // Returns the row if found, otherwise null
+        return $query->row_array(); 
     }
 
     // Retrieve batches for a specific drug ID
@@ -54,13 +42,6 @@ class Drug_model extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
-    
-    
-    // public function getBatchesByDrugId($drugId) {
-    //     $this->db->where('T02_DRUG_ID', $drugId);
-    //     $query = $this->db->get('IPSS_T02_DBATCH');
-    //     return $query->result(); // Returns all batches for the given drug
-    // }
 
     // Retrieve the drug details by drug ID
     public function getDrugById($drugId) {
@@ -113,9 +94,9 @@ class Drug_model extends CI_Model {
         return $result ? $result->T02_DRUG_ID : null;
     }
 
+    //getting all the list of tenderers
     public function getAllTenderers() {
         $query = $this->db->select('T03_TEND_ID, T03_TEND_NAME')->get('IPSS_T03_TENDERER');
         return $query->result(); // for dropdown
     }
 }
-

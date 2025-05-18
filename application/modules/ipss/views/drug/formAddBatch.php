@@ -88,6 +88,12 @@
                 </div>
             </div>
 
+            <div class="mb-2">
+                <label for="recordDate" class="form-label fw-semibold">Record Date *</label>
+                <input type="date" class="form-control form-control-sm" id="recordDate" name="recordDate" required>
+                <div class="invalid-feedback">Please enter a valid record date</div>
+            </div>
+
             <div class="text-center mt-3">
                 <button type="submit" class="btn btn-primary btn-sm">Add Batch</button>
                 <a href="<?= module_url('drug/viewBatches/' . $drug->T01_DRUG_ID) ?>"
