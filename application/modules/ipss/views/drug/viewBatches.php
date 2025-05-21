@@ -21,12 +21,13 @@ $ENABLE_DELETE = TRUE;
                     <th>Package Quantity</th>
                     <th>Original Total Price (RM)</th>
                     <th>Unit per Package</th>
+                    <th>Original Total Units</th> <!-- New column -->
                     <th>Units Left</th>
                     <th>PO Number</th>
                     <th>Price per Unit (RM)</th>
                     <th>Manufactured Date</th>
                     <th>Expiry Date</th>
-                    <th>Record Date</th> <!-- Add this column -->
+                    <th>Record Date</th>
                     <th>Barcode</th>
                     <th>Actions</th>
                 </tr>
@@ -41,21 +42,25 @@ $ENABLE_DELETE = TRUE;
                         <td><?php echo $batch->T02_PACKAGE_QUANTITY ?></td>
                         <td><?php echo $batch->T02_TP_PACKAGE_QUANTITY ?></td>
                         <td><?php echo $batch->T02_UNIT_PER_PACKAGE ?></td>
+                        <td><?php echo $batch->T02_ORI_TOTAL_UNITS ?></td> <!-- New column -->
                         <td><?php echo $batch->T02_TOTAL_UNITS ?></td>
                         <td><?php echo $batch->T02_PO_NO ?></td>
                         <td><?php echo $batch->T02_PRICE_PER_UNIT ?></td>
                         <td><?php echo $batch->T02_MFD_DATE ?></td>
                         <td><?php echo $batch->T02_EXP_DATE ?></td>
-                        <td><?php echo $batch->T02_RECORD_DATE ?></td> <!-- Add this cell -->
+                        <td><?php echo $batch->T02_RECORD_DATE ?></td>
                         <td><?php echo $batch->T02_BARCODE_NUM ?></td>
                         <td>
-                        <a class="btn btn-warning d-inline-block" href="<?php echo module_url('drug/formUpdateBatch/'.$batch->T02_BATCH_ID) ?>">
-                            <i class="fa fa-edit"></i>
-                        </a>
-                        <a class="btn btn-danger d-inline-block" href="<?php echo module_url('drug/deleteBatch/'.$batch->T02_BATCH_ID) ?>" onclick="return confirm('Are you sure you want to delete this batch?');">
-                            <i class="fa fa-trash"></i>
-                        </a>
-                    </td>
+                            <a class="btn btn-warning d-inline-block"
+                                href="<?php echo module_url('drug/formUpdateBatch/' . $batch->T02_BATCH_ID) ?>">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a class="btn btn-danger d-inline-block"
+                                href="<?php echo module_url('drug/deleteBatch/' . $batch->T02_BATCH_ID) ?>"
+                                onclick="return confirm('Are you sure you want to delete this batch?');">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </td>
                     </tr>
                 <?php } ?>
             </tbody>

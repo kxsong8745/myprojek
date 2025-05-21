@@ -49,8 +49,16 @@
                         min="1" value="<?= $batch->T02_UNIT_PER_PACKAGE ?>" required>
                     <div class="invalid-feedback">Please enter units per package</div>
                 </div>
+
                 <div class="col-md-6">
-                    <label for="totalUnits" class="form-label fw-semibold">Total Units *</label>
+                    <label for="oriTotalUnits" class="form-label fw-semibold">Original Total Units *</label>
+                    <input type="number" class="form-control form-control-sm" id="oriTotalUnits" name="oriTotalUnits"
+                        min="1" value="<?= $batch->T02_ORI_TOTAL_UNITS ?>" required>
+                    <div class="invalid-feedback">Please enter original total units</div>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="totalUnits" class="form-label fw-semibold">Current Units Left *</label>
                     <input type="number" class="form-control form-control-sm" id="totalUnits" name="totalUnits" min="1"
                         value="<?= $batch->T02_TOTAL_UNITS ?>" required>
                     <div class="invalid-feedback">Please enter total units</div>

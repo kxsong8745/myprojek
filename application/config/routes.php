@@ -52,7 +52,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 */
 // $route['default_controller'] = 'reg/parents/create';
 // $route['default_controller'] = 'reg/sys/index';
-$route['default_controller'] = 'dekan/ccc/listmohon';
+$route['default_controller'] = 'ipss/drug/listDrugs';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = false;

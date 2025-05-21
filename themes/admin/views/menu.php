@@ -138,6 +138,27 @@
 		  </ul>
 		</li>
 
+		<li class="sidebar-item">
+		  <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+			<iconify-icon icon="solar:document-linear" class="aside-icon"></iconify-icon>
+			<span class="hide-menu">Reports and PDF</span>
+		  </a>
+		  <ul aria-expanded="false" class="collapse first-level">
+			<li class="sidebar-item">
+			  <a href="<?= base_url()?>ipss/report/staffDispense" class="sidebar-link">
+				<iconify-icon icon="solar:stop-circle-line-duotone" class="sidebar-icon"></iconify-icon>
+				<span class="hide-menu">Staff Dispense</span>
+			  </a>
+
+			  <a href="<?= base_url()?>ipss/reportpdf/generateDispPdf" class="sidebar-link">
+				<iconify-icon icon="solar:stop-circle-line-duotone" class="sidebar-icon"></iconify-icon>
+				<span class="hide-menu">Dispense Record download PDF</span>
+			  </a>
+			  
+			</li>
+		  </ul>
+		</li>
+
 		<!-- <li class="sidebar-item">
 		  <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
 			<iconify-icon icon="solar:document-linear" class="aside-icon"></iconify-icon>

@@ -8,8 +8,11 @@
             <a href="<?= module_url('prepdisp/prepForm') ?>" class="btn btn-info btn-sm">
                 <i class="fa fa-plus"></i> New Preparation
             </a>
+            <a href="<?= module_url('reportpdf/generateDispPdf') ?>" class="btn btn-success btn-sm" target="_blank">
+                <i class="fa fa-file-pdf"></i> Download PDF
+            </a>
         </div>
-    </div>
+    </div> 
     <div class="card-body">
         <?php if ($this->session->flashdata('success')) : ?>
             <div class="alert alert-success">
@@ -58,12 +61,13 @@
     </div>
 </div>
 
+<?php if (!empty($disp_records)) : ?>
 <script>
     $(document).ready(function() {
-        // Initialize DataTable
         $('#dispTable').DataTable({
             "order": [[0, "desc"]],
             "pageLength": 25
         });
     });
 </script>
+<?php endif; ?>

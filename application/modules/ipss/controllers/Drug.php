@@ -1,7 +1,7 @@
 <?php
 
 class Drug extends Admin_Controller
-{
+{ 
 
     public function __construct()
     {
@@ -189,11 +189,12 @@ class Drug extends Admin_Controller
             // Prepare batch data for insertion
             $data_to_batch = [
                 "T02_DRUG_ID" => $drugId,
-                "T02_TENDERER_ID" => $tendererId, // updated
+                "T02_TENDERER_ID" => $tendererId,
                 "T02_PACKAGE_QUANTITY" => $packageQty,
                 "T02_TP_PACKAGE_QUANTITY" => $totalPricePackageQty,
                 "T02_UNIT_PER_PACKAGE" => $unitPerPackage,
-                "T02_TOTAL_UNITS" => $totalUnits,
+                "T02_ORI_TOTAL_UNITS" => $totalUnits, // Set the original total units
+                "T02_TOTAL_UNITS" => $totalUnits,     // Initially both are the same
                 "T02_PO_NO" => $poNo,
                 "T02_PRICE_PER_UNIT" => $pricePerUnit,
                 "T02_MFD_DATE" => $formattedMfgDate,
@@ -225,6 +226,7 @@ class Drug extends Admin_Controller
         $packageQty = $this->input->post("packageQty");
         $totalPricePackageQty = $this->input->post("totalPricePackageQty");
         $unitPerPackage = $this->input->post("unitPerPackage");
+        $oriTotalUnits = $this->input->post("oriTotalUnits"); // New field
         $totalUnits = $this->input->post("totalUnits");
         $poNo = $this->input->post("poNo");
         $pricePerUnit = $this->input->post("pricePerUnit");
@@ -247,11 +249,12 @@ class Drug extends Admin_Controller
 
             // Prepare data for update
             $data_to_update = [
-                "T02_TENDERER_ID" => $tendererId, // updated
+                "T02_TENDERER_ID" => $tendererId,
                 "T02_PACKAGE_QUANTITY" => $packageQty,
                 "T02_TP_PACKAGE_QUANTITY" => $totalPricePackageQty,
                 "T02_UNIT_PER_PACKAGE" => $unitPerPackage,
-                "T02_TOTAL_UNITS" => $totalUnits,
+                "T02_ORI_TOTAL_UNITS" => $oriTotalUnits, // Update original total units
+                "T02_TOTAL_UNITS" => $totalUnits,        // Update current total units
                 "T02_PO_NO" => $poNo,
                 "T02_PRICE_PER_UNIT" => $pricePerUnit,
                 "T02_MFD_DATE" => $mfgDate->format('d-M-Y'),

@@ -225,5 +225,4 @@ class Prepdisp_model extends CI_Model
         $query = $this->db->get('IPSS_T04_OPEN_SHELF');
         return $query->result();
     }
-
 }
