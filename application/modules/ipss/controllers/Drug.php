@@ -10,6 +10,10 @@ class Drug extends Admin_Controller
         $this->load->model("drug_model");
     }
 
+    public function test(){
+        
+    }
+
     public function drugForm_add()
     {
         $this->template->render();
