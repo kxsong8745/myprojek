@@ -89,8 +89,10 @@ $tns =  "(DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = db-or
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => $tns,
-	'username' => 'pita214',
-	'password' => 'pita214',
+	'username' => 'fyp',
+	'password' => 'mypassword',
+	// 'username' => 'pita214',
+	// 'password' => 'pita214',
 	'dbdriver' => 'oci8',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
