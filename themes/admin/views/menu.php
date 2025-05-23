@@ -61,12 +61,6 @@
 			</li>
 		  </ul>
 		</li> -->
-		<li class="sidebar-item">
-			  <a href="<?= base_url()?>ipss/user/loginForm" class="sidebar-link">
-				<iconify-icon icon="solar:stop-circle-line-duotone" class="sidebar-icon"></iconify-icon>
-				<span class="hide-menu">Login</span>
-			  </a>
-			</li>
 
 		<li class="sidebar-item">
 		  <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
@@ -150,10 +144,10 @@
 				<span class="hide-menu">Staff Dispense</span>
 			  </a>
 
-			  <a href="<?= base_url()?>ipss/reportpdf/generateDispPdf" class="sidebar-link">
+			  <!-- <a href="<?= base_url()?>ipss/reportpdf/generateDispPdf" class="sidebar-link">
 				<iconify-icon icon="solar:stop-circle-line-duotone" class="sidebar-icon"></iconify-icon>
 				<span class="hide-menu">Dispense Record download PDF</span>
-			  </a>
+			  </a> -->
 			  
 			</li>
 		  </ul>

@@ -77,6 +77,11 @@ $query_builder = TRUE;
 $tns =  "(DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST =192.168.20.209)(PORT = 1521)))".
    	    "(CONNECT_DATA = (SID = stagdb)))";
 
+//localhost connection for pita214
+// $tns =  "(DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.20.176)(PORT = 49161)))".
+//    	    "(CONNECT_DATA = (SID = xe)))";
+
+//for PITA server
 $tns =  "(DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = db-oracle)(PORT = 1521)))".
    	    "(CONNECT_DATA = (SID = xe)))";
 		
@@ -84,8 +89,8 @@ $tns =  "(DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = db-or
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => $tns,
-	'username' => 'fyp',
-	'password' => 'mypassword',
+	'username' => 'pita214',
+	'password' => 'pita214',
 	'dbdriver' => 'oci8',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
