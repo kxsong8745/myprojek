@@ -13,7 +13,7 @@ class Admin_Controller extends Base_Controller
      */
     public function __construct()
     { 
-		$_SESSION["icno"] = "820519115343";
+		//$_SESSION["icno"] = "820519115343";
        
         $this->autoload['helpers'][]   = 'form';
         $this->autoload['libraries'][] = 'Template';
@@ -27,6 +27,9 @@ class Admin_Controller extends Base_Controller
 		
 		// $this->db->query("ALTER SESSION SET NLS_DATE_FORMAT = 'DD/MM/YYYY HH24:MI:SS'"); 
         parent::__construct();
+        
+        // echo $_SESSION['UID'] . " - " . $_SESSION['STAFF'] .  " - " . $_SESSION["icno"]; 
+        
 
 		if (!isset($_SESSION["icno"]) ) {
 			$domain =  $_SERVER["SERVER_NAME"];
