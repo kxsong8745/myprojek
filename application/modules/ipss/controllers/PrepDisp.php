@@ -4,7 +4,7 @@ class Prepdisp extends Admin_Controller
     public function __construct()
     {
         parent::__construct();
-        // session_start();
+        session_start();
         $this->load->model("prepdisp_model");
     }
 
