@@ -5,7 +5,7 @@ class Alert extends Admin_Controller
     public function __construct()
     {
         parent::__construct();
-        session_start();
+        // session_start();
         $this->load->model('alert_model');
         // Set timezone for application
         date_default_timezone_set('Asia/Kuala_Lumpur');

@@ -8,7 +8,6 @@ class Drug extends Admin_Controller
         parent::__construct();
         // session_start();
         $this->load->model("drug_model");
-        
     }
 
     public function drugForm_add()

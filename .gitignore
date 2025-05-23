@@ -20,4 +20,8 @@ application/config/config.php
 
 uploads/*
 upload/*
+<<<<<<< HEAD
 user_guide/*
+=======
+user_guide/*
+>>>>>>> 9d8f0992a2b61c2f8900a6184ae733001d9cdab3
