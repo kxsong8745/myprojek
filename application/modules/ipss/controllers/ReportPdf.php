@@ -1,6 +1,6 @@
 <?php
 
-class ReportPdf extends Admin_Controller {
+class Reportpdf extends Admin_Controller {
 
     public function __construct()
     {

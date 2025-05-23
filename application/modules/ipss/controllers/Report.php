@@ -5,7 +5,7 @@ class Report extends Admin_Controller
     public function __construct()
     {
         parent::__construct();
-        session_start();
+        // session_start();
         $this->load->model("report_model");
     }
 
