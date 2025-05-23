@@ -6,9 +6,9 @@ class Drug extends Admin_Controller
     public function __construct()
     {
         parent::__construct();
-        session_start();
-        $this->load->model("drug_model");
         // session_start();
+        $this->load->model("drug_model");
+        
     }
 
     public function drugForm_add()
