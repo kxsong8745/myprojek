@@ -166,25 +166,23 @@ class Prepdisp_model extends CI_Model
     // New function to insert into disp table
     public function insert_disp($data)
     {
-        // Step 1: Get next ID from sequence
+        // Get next ID from sequence
         $query = $this->db->query("SELECT IPSS_T08_DISP_SEQ.NEXTVAL AS next_id FROM dual");
         $row = $query->row();
         $next_id = $row->next_id;
 
-        // Step 2: Add the ID to the data array
+        // Add the ID to the data array
         $data['T08_DISP_ID'] = $next_id;
 
-        // Step 3: Handle Oracle date format
+        // Handle Oracle date format
         if (isset($data['T08_DISP_DATE'])) {
             $date_string = $data['T08_DISP_DATE'];
             $this->db->set('T08_DISP_DATE', "TO_DATE('$date_string', 'DD-MON-YYYY HH24:MI:SS')", false);
             unset($data['T08_DISP_DATE']);
         }
 
-        // Step 4: Insert data with ID and date set
         $this->db->insert('IPSS_T08_DISP', $data);
 
-        // Step 5: Return inserted ID
         return $next_id;
     }
 
@@ -225,4 +223,52 @@ class Prepdisp_model extends CI_Model
         $query = $this->db->get('IPSS_T04_OPEN_SHELF');
         return $query->result();
     }
+
+    public function get_filtered_disp_records($filters = [])
+    {
+        $this->db->query("ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MM-YYYY HH24:MI:SS'");
+
+        $this->db->select('*')
+            ->from('IPSS_T08_DISP');
+
+        // Apply search filter
+        if (!empty($filters['search'])) {
+            $this->db->where("LOWER(T08_DRUG_NAME) LIKE", '%' . strtolower($filters['search']) . '%');
+        }
+
+        // Apply date filters
+        if (!empty($filters['filter_type'])) {
+            switch ($filters['filter_type']) {
+                case 'date':
+                    if (!empty($filters['filter_date'])) {
+                        $date_obj = DateTime::createFromFormat('Y-m-d', $filters['filter_date']);
+                        if ($date_obj) {
+                            $formatted_date = $date_obj->format('Y-m-d');
+                            $this->db->where("TRUNC(T08_DISP_DATE) =", "TO_DATE('$formatted_date', 'YYYY-MM-DD')", false);
+                        }
+                    }
+                    break;
+
+
+                case 'month':
+                    if (!empty($filters['filter_month']) && !empty($filters['filter_year'])) {
+                        $month_num = str_pad($filters['filter_month'], 2, '0', STR_PAD_LEFT);
+                        $this->db->where("TO_CHAR(T08_DISP_DATE, 'MM-YYYY') = ", $month_num . '-' . $filters['filter_year']);
+                    }
+                    break;
+
+                case 'year':
+                    if (!empty($filters['filter_year'])) {
+                        $this->db->where("TO_CHAR(T08_DISP_DATE, 'YYYY') = ", $filters['filter_year']);
+                    }
+                    break;
+            }
+        }
+
+        return $this->db->order_by('T08_DISP_DATE', 'DESC')
+            ->get()
+            ->result();
+    }
+
+
 }

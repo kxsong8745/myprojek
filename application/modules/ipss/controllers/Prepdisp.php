@@ -39,7 +39,7 @@ class Prepdisp extends Admin_Controller
             $this->prepdisp_model->update_batch_units($batch_id, $new_total_units);
 
             //Check if the same drug batch already exists on the open shelf
-            $existing_shelf_item = $this->db->get_where('IPSS_T04_OPEN_SHELF', ['T04_BATCH_ID' => $batch_id,'T04_DRUG_ID' => $drug_id])->row();
+            $existing_shelf_item = $this->db->get_where('IPSS_T04_OPEN_SHELF', ['T04_BATCH_ID' => $batch_id, 'T04_DRUG_ID' => $drug_id])->row();
 
             if ($existing_shelf_item) {
                 // If the same drug batch exists, update the existing record
@@ -47,7 +47,7 @@ class Prepdisp extends Admin_Controller
                 $new_ori_moved = $existing_shelf_item->T04_ORI_MOVED + $shelf_unit;
                 $this->db->update(
                     'IPSS_T04_OPEN_SHELF',
-                    ['T04_TOTAL_UNITS' => $new_shelf_units,'T04_ORI_MOVED' => $new_ori_moved],
+                    ['T04_TOTAL_UNITS' => $new_shelf_units, 'T04_ORI_MOVED' => $new_ori_moved],
                     ['T04_OPEN_ID' => $existing_shelf_item->T04_OPEN_ID]
                 );
             } else {
@@ -56,7 +56,7 @@ class Prepdisp extends Admin_Controller
                     "T04_BATCH_ID" => $batch_id,
                     "T04_DRUG_ID" => $drug_id,
                     "T04_TOTAL_UNITS" => $shelf_unit,
-                    "T04_ORI_MOVED" => $shelf_unit, 
+                    "T04_ORI_MOVED" => $shelf_unit,
                     "T04_DATE_ADDED" => $formatted_date,
                     "T04_MOVED_BY" => $staff_name
                 ];
@@ -245,7 +245,7 @@ class Prepdisp extends Admin_Controller
             $this->prepdisp_model->update_batch_units($batch_id, $new_total_units);
 
             // Check if this drug and batch already exists on shelf (1 record for a drug batch)
-            $existing_shelf_item = $this->db->get_where('IPSS_T04_OPEN_SHELF', [ 'T04_BATCH_ID' => $batch_id, 'T04_DRUG_ID' => $drug_id ])->row();
+            $existing_shelf_item = $this->db->get_where('IPSS_T04_OPEN_SHELF', ['T04_BATCH_ID' => $batch_id, 'T04_DRUG_ID' => $drug_id])->row();
 
             if ($existing_shelf_item) {
                 //if the shelf record already exist, update existing shelf record by adding to the existing record
@@ -265,8 +265,8 @@ class Prepdisp extends Admin_Controller
                     "T04_BATCH_ID" => $batch_id,
                     "T04_DRUG_ID" => $drug_id,
                     "T04_TOTAL_UNITS" => $shelf_unit,
-                    "T04_ORI_MOVED" => $shelf_unit, 
-                    "T04_DATE_ADDED" => $formatted_date, 
+                    "T04_ORI_MOVED" => $shelf_unit,
+                    "T04_DATE_ADDED" => $formatted_date,
                     "T04_MOVED_BY" => $staff_name
                 ];
 
@@ -473,10 +473,34 @@ class Prepdisp extends Admin_Controller
         }
     }
 
+
+    // Updated dispList function in controller
     public function dispList()
     {
-        $disp_records = $this->prepdisp_model->get_disp_records();
+        $search = $this->input->get('search');
+        $filter_type = $this->input->get('filter_type');
+        $filter_date = $this->input->get('filter_date');
+        $filter_month = $this->input->get('filter_month');
+        $filter_year = $this->input->get('filter_year');
+
+        // Build filter parameters
+        $filters = [
+            'search' => $search,
+            'filter_type' => $filter_type,
+            'filter_date' => $filter_date,
+            'filter_month' => $filter_month,
+            'filter_year' => $filter_year
+        ];
+
+        $disp_records = $this->prepdisp_model->get_filtered_disp_records($filters);
+
         $data['disp_records'] = $disp_records;
+        $data['search'] = $search;
+        $data['filter_type'] = $filter_type;
+        $data['filter_date'] = $filter_date;
+        $data['filter_month'] = $filter_month;
+        $data['filter_year'] = $filter_year;
+
         $this->template->render('prepdisp/dispList', $data);
     }
 
@@ -544,4 +568,5 @@ class Prepdisp extends Admin_Controller
             redirect(module_url("prepdisp/prepList"));
         }
     }
+
 }
