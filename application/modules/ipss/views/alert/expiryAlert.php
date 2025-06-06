@@ -25,6 +25,19 @@
                             <i class="fas fa-check-circle"></i> No expiry alerts at this time.
                         </div>
                     <?php else: ?>
+                        <div class="mb-3">
+                            <a href="<?php echo site_url('ipss/alert/expiryAlert'); ?>"
+                                class="btn btn-secondary <?php echo (!$current_filter) ? 'active' : ''; ?>">All</a>
+                            <a href="<?php echo site_url('ipss/alert/expiryAlert?filter=EXPIRED'); ?>"
+                                class="btn btn-warning <?php echo ($current_filter === 'EXPIRED') ? 'active' : ''; ?>">Expired</a>
+                            <a href="<?php echo site_url('ipss/alert/expiryAlert?filter=3_MONTHS'); ?>"
+                                class="btn btn-danger <?php echo ($current_filter === '3_MONTHS') ? 'active' : ''; ?>">3 Months</a>
+                                <a href="<?php echo site_url('ipss/alert/expiryAlert?filter=6_MONTHS'); ?>"
+                                class="btn btn-danger <?php echo ($current_filter === '6_MONTHS') ? 'active' : ''; ?>">6 Months</a>
+                                <a href="<?php echo site_url('ipss/alert/expiryAlert?filter=9_MONTHS'); ?>"
+                                class="btn btn-danger <?php echo ($current_filter === '9_MONTHS') ? 'active' : ''; ?>">9 Months</a>
+                        </div>
+
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped table-hover datatable">
                                 <thead>

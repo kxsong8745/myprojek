@@ -25,6 +25,14 @@
                             <i class="fas fa-check-circle"></i> No stock alerts at this time.
                         </div>
                     <?php else: ?>
+                        <div class="mb-3">
+                            <a href="<?php echo site_url('ipss/alert/stockAlert'); ?>"
+                                class="btn btn-secondary <?php echo (!$current_filter) ? 'active' : ''; ?>">All</a>
+                            <a href="<?php echo site_url('ipss/alert/stockAlert?filter=WARNING'); ?>"
+                                class="btn btn-warning <?php echo ($current_filter === 'WARNING') ? 'active' : ''; ?>">Warning</a>
+                            <a href="<?php echo site_url('ipss/alert/stockAlert?filter=CRITICAL'); ?>"
+                                class="btn btn-danger <?php echo ($current_filter === 'CRITICAL') ? 'active' : ''; ?>">Critical</a>
+                        </div>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped table-hover datatable">
                                 <thead>

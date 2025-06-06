@@ -56,9 +56,11 @@
 
     // Function to initialize the chart with data
     function initializeChart(chartData) {
+
+        console.log(chartData);
         // Prepare data for the chart
         const staffNames = chartData.map(item => item.staff_name);
-        const dispensedUnits = chartData.map(item => item.total_units);
+        const dispensedUnits = chartData.map(item => Number(item.TOTAL_UNITS) || 0);
 
         // Get the chart context
         const ctx = document.getElementById('dispensingChart').getContext('2d');
@@ -99,7 +101,7 @@
                 scales: {
                     y: {
                         beginAtZero: true,
-                        max: 1000, // Set max value of y-axis to 1000
+                        max: 100, 
                         title: {
                             display: true,
                             text: 'Number of Units Dispensed'

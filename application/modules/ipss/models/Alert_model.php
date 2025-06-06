@@ -2,28 +2,25 @@
 
 class Alert_model extends CI_Model
 {
-
     public function __construct()
     {
         parent::__construct();
         $this->load->database();
     }
 
-    /**
-     * Updates stock alerts in the IPSS_T06_STOCK_ALERTS table
-     * Calculates current stock by adding all T02_TOTAL_UNITS for each drug
-     * Compares with T01_MIN_STOCK and creates appropriate alerts
-     */
+    //Updates stock alerts in the IPSS_T06_STOCK_ALERTS table
+    //Calculates current stock by adding all T02_TOTAL_UNITS for each drug
+    //Compares with T01_MIN_STOCK and creates appropriate alerts
     public function update_stock_alerts()
     {
-        // First, get all drugs and their current stock levels
+        // get all drugs and their current stock levels
         $sql = "SELECT d.T01_DRUG_ID, d.T01_MIN_STOCK, COALESCE(SUM(b.T02_TOTAL_UNITS), 0) as CURRENT_STOCK 
         FROM IPSS_T01_DRUG d 
         LEFT JOIN IPSS_T02_DBATCH b ON b.T02_DRUG_ID = d.T01_DRUG_ID AND b.T02_TOTAL_UNITS > 0 AND b.T02_EXP_DATE > SYSDATE 
         GROUP BY d.T01_DRUG_ID, d.T01_MIN_STOCK";
         $drugs_stock = $this->db->query($sql)->result();
 
-        // Also get drugs with no batches (or all batches expired/empty)
+        // get drugs with no batches (or all batches expired/empty)
         $sql_no_stock = "SELECT d.T01_DRUG_ID, d.T01_MIN_STOCK, 0 AS CURRENT_STOCK
         FROM IPSS_T01_DRUG d
         WHERE NOT EXISTS (
@@ -76,27 +73,28 @@ class Alert_model extends CI_Model
         }
     }
 
-    /**
-     * Retrieves stock alerts with drug information for display
-     * @return array Stock alerts with drug details
-     */
-    public function get_stock_alerts()
+    //Retrieves stock alerts with drug information for display
+    public function get_stock_alerts($filter = null)
     {
+        $where = '';
+        $params = [];
+
+        if ($filter === 'CRITICAL' || $filter === 'WARNING') {
+            $where = 'WHERE a.T06_ALERT_TYPE = ?';
+            $params[] = $filter;
+        }
+
         $sql = "SELECT a.*, d.T01_DRUGS AS DRUG_NAME
             FROM IPSS_T06_STOCK_ALERTS a
             JOIN IPSS_T01_DRUG d ON d.T01_DRUG_ID = a.T06_DRUG_ID
-            ORDER BY 
-                a.T06_ALERT_TYPE ASC,
-                a.T06_CURRENT_STOCK ASC";
+            $where
+            ORDER BY a.T06_ALERT_TYPE ASC, a.T06_CURRENT_STOCK ASC";
 
-        return $this->db->query($sql)->result();
+        return $this->db->query($sql, $params)->result();
     }
 
-
-    /**
-     * Updates expiry alerts in the IPSS_T07_EXPIRY_ALERTS table
-     * Checks drug batches expiry dates and creates appropriate alerts
-     */
+    //Updates expiry alerts in the IPSS_T07_EXPIRY_ALERTS table
+    //Checks drug batches expiry dates and creates appropriate alerts
     public function update_expiry_alerts()
     {
         // Get current date for comparison
@@ -122,11 +120,11 @@ class Alert_model extends CI_Model
             $expiry_status = null;
             if ($days_until_expiry <= 0) {
                 $expiry_status = 'EXPIRED';
-            } elseif ($days_until_expiry <= 90) { // 3 months
+            } elseif ($days_until_expiry <= 90) {
                 $expiry_status = '3_MONTHS';
-            } elseif ($days_until_expiry <= 180) { // 6 months
+            } elseif ($days_until_expiry <= 180) {
                 $expiry_status = '6_MONTHS';
-            } elseif ($days_until_expiry <= 270) { // 9 months
+            } elseif ($days_until_expiry <= 270) {
                 $expiry_status = '9_MONTHS';
             }
 
@@ -168,15 +166,21 @@ class Alert_model extends CI_Model
         $this->db->query("DELETE FROM IPSS_T07_EXPIRY_ALERTS WHERE T07_BATCH_ID NOT IN (SELECT T02_BATCH_ID FROM IPSS_T02_DBATCH WHERE T02_TOTAL_UNITS > 0)");
     }
 
-    /**
-     * Retrieves expiry alerts with drug information for display
-     * @return array Expiry alerts with drug details
-     */
-    public function get_expiry_alerts()
+    //Retrieves expiry alerts with drug information for display
+    public function get_expiry_alerts($filter = null)
     {
+        $where = '';
+        $params = [];
+
+        if ($filter === 'EXPIRED' || $filter === '3_MONTHS' || $filter === '6_MONTHS' || $filter === '9_MONTHS') {
+            $where = 'WHERE a.T07_EXPIRY_STATUS = ?';
+            $params[] = $filter;
+        }
+
         $sql = "SELECT a.*, d.T01_DRUGS AS DRUG_NAME
             FROM IPSS_T07_EXPIRY_ALERTS a
             JOIN IPSS_T01_DRUG d ON d.T01_DRUG_ID = a.T07_DRUG_ID
+            $where
             ORDER BY 
                 CASE a.T07_EXPIRY_STATUS 
                     WHEN 'EXPIRED' THEN 1 
@@ -186,6 +190,7 @@ class Alert_model extends CI_Model
                 END ASC,
                 a.T07_REMAINING_UNITS ASC";
 
-        return $this->db->query($sql)->result();
+        return $this->db->query($sql, $params)->result();
     }
+
 }
