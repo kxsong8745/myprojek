@@ -102,7 +102,7 @@
 			</a>
 			<ul aria-expanded="false" class="collapse first-level">
 				<li class="sidebar-item">
-					<a href="<?= base_url() ?>ipss/report/staffDispense" class="sidebar-link">
+					<a href="<?= base_url() ?>ipss/chartdisp/staffDispense" class="sidebar-link">
 						<iconify-icon icon="solar:stop-circle-line-duotone" class="sidebar-icon"></iconify-icon>
 						<span class="hide-menu">Staff Dispense</span>
 					</a>
