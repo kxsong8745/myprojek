@@ -2,12 +2,6 @@
 
 class Alert_model extends CI_Model
 {
-    public function __construct()
-    {
-        parent::__construct();
-        $this->load->database();
-    }
-
     //Updates stock alerts in the IPSS_T06_STOCK_ALERTS table
     //Calculates current stock by adding all T02_TOTAL_UNITS for each drug
     //Compares with T01_MIN_STOCK and creates appropriate alerts
