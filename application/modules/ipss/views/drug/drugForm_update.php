@@ -23,6 +23,13 @@
                     name="minStock" value="<?= $drug->T01_MIN_STOCK ?>" required>
             </div>
 
+            <div class="mb-3">
+                <label for="minStockWarn" class="form-label fw-semibold">Minimum Stock Warning Threshold</label>
+                <input type="text" class="form-control form-control-sm" id="minStockWarn"
+                    placeholder="Warning threshold" name="minStockWarn" value="<?= $drug->T01_MIN_STOCK_WARN ?>">
+            </div>
+
+
             <div class="text-center mt-4">
                 <button type="submit" class="btn btn-primary btn-sm">Update Drug</button>
             </div>

@@ -6,7 +6,7 @@ class Alertpdf_model extends CI_Model
         $where = '';
         $params = [];
 
-        if ($filter === 'CRITICAL' || $filter === 'WARNING') {
+        if (in_array($filter, ['CRITICAL', 'WARNING'])) {
             $where = 'WHERE a.T06_ALERT_TYPE = ?';
             $params[] = $filter;
         }

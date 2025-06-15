@@ -21,40 +21,34 @@ class Alertpdf extends Admin_Controller
         $stock_alerts = $this->alertpdf_model->get_filtered_stock_alerts($filter);
 
         $html = '
-        <html><head><style>
-            body { font-family: Arial; font-size: 12px; }
-            table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-            th, td { border: 1px solid #000; padding: 8px; text-align: left; }
-            th { background-color: #f2f2f2; }
-            h2 { text-align: center; }
-        </style></head><body>';
+    <html><head><style>
+        body { font-family: Arial; font-size: 12px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #000; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        h2 { text-align: center; }
+    </style></head><body>';
 
         $html .= '<h2>Drug Stock Alerts Report</h2>';
 
-        if ($filter && $filter !== 'ALL') {
-            $stock_alerts = $this->alertpdf_model->get_filtered_stock_alerts($filter);
-        } else {
-            $stock_alerts = $this->alertpdf_model->get_filtered_stock_alerts(); // No filter applied
-        }
-
         $html .= '<table><thead>
-            <tr>
-                <th>Alert Type</th>
-                <th>Drug Name</th>
-                <th>Current Stock</th>
-                <th>Minimum Stock</th>
-                <th>Alert Date</th>
-            </tr></thead><tbody>';
+        <tr>
+            <th>Alert Type</th>
+            <th>Drug Name</th>
+            <th>Current Stock</th>
+            <th>Minimum Stock</th>
+            <th>Alert Date</th>
+        </tr></thead><tbody>';
 
         if (!empty($stock_alerts)) {
             foreach ($stock_alerts as $alert) {
                 $html .= '<tr>
-                    <td>' . htmlspecialchars($alert->T06_ALERT_TYPE) . '</td>
-                    <td>' . htmlspecialchars($alert->DRUG_NAME) . '</td>
-                    <td>' . $alert->T06_CURRENT_STOCK . '</td>
-                    <td>' . $alert->T06_MIN_STOCK . '</td>
-                    <td>' . date('Y-m-d', strtotime($alert->T06_ALERT_DATE)) . '</td>
-                </tr>';
+                <td>' . htmlspecialchars($alert->T06_ALERT_TYPE) . '</td>
+                <td>' . htmlspecialchars($alert->DRUG_NAME) . '</td>
+                <td>' . $alert->T06_CURRENT_STOCK . '</td>
+                <td>' . $alert->T06_MIN_STOCK . '</td>
+                <td>' . date('Y-m-d', strtotime($alert->T06_ALERT_DATE)) . '</td>
+            </tr>';
             }
         } else {
             $html .= '<tr><td colspan="5" style="text-align:center;">No alerts found</td></tr>';
@@ -66,6 +60,7 @@ class Alertpdf extends Admin_Controller
         $this->m_pdf->pdf->WriteHTML($html);
         $this->m_pdf->pdf->Output("stock_alert_report.pdf", "I");
     }
+
 
     public function alertExpForm()
     {

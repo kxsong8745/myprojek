@@ -21,6 +21,7 @@ $ENABLE_DELETE = TRUE;
                     <th>Drugs</th>
                     <th>Trade Name</th>
                     <th>Minimum Stock to Retain</th>
+                    <th>Warning Threshold</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -33,6 +34,8 @@ $ENABLE_DELETE = TRUE;
                             <td><?= $row->T01_DRUGS ?></td>
                             <td><?= $row->T01_TRADE_NAME ?></td>
                             <td><?= $row->T01_MIN_STOCK ?></td>
+                            <td><?= $row->T01_MIN_STOCK_WARN ?></td>
+
                             <td>
                                 <a class="btn btn-info" href="<?= module_url("drug/viewBatches/" . $row->T01_DRUG_ID) ?>">
                                     <i class="fas fa-eye"></i> 
@@ -48,7 +51,7 @@ $ENABLE_DELETE = TRUE;
                     <?php } ?>
                 <?php else: ?>
                     <tr>
-                        <td colspan="4" class="text-center">No drugs found</td>
+                        <td colspan="6" class="text-center">No drugs found</td>
                     </tr>
                 <?php endif; ?>
             </tbody>

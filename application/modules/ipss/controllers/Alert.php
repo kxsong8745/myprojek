@@ -39,4 +39,5 @@ class Alert extends Admin_Controller
         $this->template->set("current_filter", $filter);
         $this->template->render();
     }
+    
 }

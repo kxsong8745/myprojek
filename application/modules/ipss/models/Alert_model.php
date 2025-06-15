@@ -8,21 +8,25 @@ class Alert_model extends CI_Model
     public function update_stock_alerts()
     {
         // get all drugs and their current stock levels
-        $sql = "SELECT d.T01_DRUG_ID, d.T01_MIN_STOCK, COALESCE(SUM(b.T02_TOTAL_UNITS), 0) as CURRENT_STOCK 
+        $sql = "SELECT d.T01_DRUG_ID, d.T01_MIN_STOCK, d.T01_MIN_STOCK_WARN, 
+               COALESCE(SUM(b.T02_TOTAL_UNITS), 0) as CURRENT_STOCK 
         FROM IPSS_T01_DRUG d 
-        LEFT JOIN IPSS_T02_DBATCH b ON b.T02_DRUG_ID = d.T01_DRUG_ID AND b.T02_TOTAL_UNITS > 0 AND b.T02_EXP_DATE > SYSDATE 
-        GROUP BY d.T01_DRUG_ID, d.T01_MIN_STOCK";
+        LEFT JOIN IPSS_T02_DBATCH b 
+            ON b.T02_DRUG_ID = d.T01_DRUG_ID 
+           AND b.T02_TOTAL_UNITS > 0 
+           AND b.T02_EXP_DATE > SYSDATE 
+        GROUP BY d.T01_DRUG_ID, d.T01_MIN_STOCK, d.T01_MIN_STOCK_WARN";
         $drugs_stock = $this->db->query($sql)->result();
 
         // get drugs with no batches (or all batches expired/empty)
-        $sql_no_stock = "SELECT d.T01_DRUG_ID, d.T01_MIN_STOCK, 0 AS CURRENT_STOCK
-        FROM IPSS_T01_DRUG d
-        WHERE NOT EXISTS (
-            SELECT 1 FROM IPSS_T02_DBATCH b
-            WHERE b.T02_DRUG_ID = d.T01_DRUG_ID
-            AND b.T02_TOTAL_UNITS > 0
-            AND b.T02_EXP_DATE > SYSDATE
-        )";
+        $sql_no_stock = "SELECT d.T01_DRUG_ID, d.T01_MIN_STOCK, d.T01_MIN_STOCK_WARN, 0 AS CURRENT_STOCK
+    FROM IPSS_T01_DRUG d
+    WHERE NOT EXISTS (
+        SELECT 1 FROM IPSS_T02_DBATCH b
+        WHERE b.T02_DRUG_ID = d.T01_DRUG_ID
+          AND b.T02_TOTAL_UNITS > 0
+          AND b.T02_EXP_DATE > SYSDATE
+    )";
         $drugs_no_stock = $this->db->query($sql_no_stock)->result();
 
         // Combine the results
@@ -33,12 +37,13 @@ class Alert_model extends CI_Model
             $drug_id = $drug->T01_DRUG_ID;
             $current_stock = $drug->CURRENT_STOCK;
             $min_stock = $drug->T01_MIN_STOCK;
+            $min_warn = $drug->T01_MIN_STOCK_WARN;
 
-            // Calculate alert type
+            // Determine alert type
             $alert_type = null;
             if ($current_stock < $min_stock) {
                 $alert_type = 'CRITICAL';
-            } elseif ($current_stock < ($min_stock + 100)) {
+            } elseif (!is_null($min_warn) && $current_stock < $min_warn) {
                 $alert_type = 'WARNING';
             }
 
@@ -49,12 +54,21 @@ class Alert_model extends CI_Model
                 // Update or insert alert
                 if ($existing_alert) {
                     if ($existing_alert->T06_ALERT_TYPE != $alert_type || $existing_alert->T06_CURRENT_STOCK != $current_stock) {
-                        $this->db->query(" UPDATE IPSS_T06_STOCK_ALERTS SET T06_ALERT_TYPE = ?, T06_CURRENT_STOCK = ?, T06_MIN_STOCK = ?, T06_ALERT_DATE = TO_DATE(?, 'YYYY-MM-DD HH24:MI:SS')
-                            WHERE T06_ALERT_ID = ? ", [$alert_type, $current_stock, $min_stock, date('Y-m-d H:i:s'), $existing_alert->T06_ALERT_ID]);
+                        $this->db->query(
+                            "UPDATE IPSS_T06_STOCK_ALERTS 
+                     SET T06_ALERT_TYPE = ?, 
+                         T06_CURRENT_STOCK = ?, 
+                         T06_MIN_STOCK = ?, 
+                         T06_ALERT_DATE = TO_DATE(?, 'YYYY-MM-DD HH24:MI:SS') 
+                     WHERE T06_ALERT_ID = ?",
+                            [$alert_type, $current_stock, $min_stock, date('Y-m-d H:i:s'), $existing_alert->T06_ALERT_ID]
+                        );
                     }
                 } else {
                     $this->db->query(
-                        " INSERT INTO IPSS_T06_STOCK_ALERTS (T06_DRUG_ID, T06_ALERT_TYPE, T06_CURRENT_STOCK, T06_MIN_STOCK, T06_ALERT_DATE) VALUES (?, ?, ?, ?, TO_DATE(?, 'YYYY-MM-DD HH24:MI:SS'))",
+                        "INSERT INTO IPSS_T06_STOCK_ALERTS 
+                 (T06_DRUG_ID, T06_ALERT_TYPE, T06_CURRENT_STOCK, T06_MIN_STOCK, T06_ALERT_DATE) 
+                 VALUES (?, ?, ?, ?, TO_DATE(?, 'YYYY-MM-DD HH24:MI:SS'))",
                         [$drug_id, $alert_type, $current_stock, $min_stock, date('Y-m-d H:i:s')]
                     );
                 }
@@ -66,6 +80,8 @@ class Alert_model extends CI_Model
             }
         }
     }
+
+
 
     //Retrieves stock alerts with drug information for display
     public function get_stock_alerts($filter = null)
@@ -86,6 +102,7 @@ class Alert_model extends CI_Model
 
         return $this->db->query($sql, $params)->result();
     }
+
 
     //Updates expiry alerts in the IPSS_T07_EXPIRY_ALERTS table
     //Checks drug batches expiry dates and creates appropriate alerts

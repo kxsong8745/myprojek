@@ -72,8 +72,7 @@
                             <ul>
                                 <li><span class="badge" style="color: black;">CRITICAL</>: Stock level is below the minimum
                                         threshold.</li>
-                                <li><span class="badge" style="color: black;">WARNING</sspa>: Stock level is between minimum
-                                        threshold and minimum+100.</li>
+                                <li><span class="badge" style="color: black;">WARNING</sspa>: Stock level is in the range for warning</li>
                             </ul>
                         </div>
                     <?php endif; ?>

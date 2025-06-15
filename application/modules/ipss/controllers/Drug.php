@@ -60,6 +60,7 @@ class Drug extends Admin_Controller
         $drugs = $this->input->post("drugs");
         $tradeName = $this->input->post("tradeName");
         $minStock = $this->input->post("minStock");
+        $minStockWarn = $this->input->post("minStockWarn");
 
         try {
             // Check if the drug already exists
@@ -74,7 +75,8 @@ class Drug extends Admin_Controller
                 $data_to_drug = [
                     "T01_DRUGS" => $drugs,
                     "T01_TRADE_NAME" => $tradeName,
-                    "T01_MIN_STOCK" => $minStock
+                    "T01_MIN_STOCK" => $minStock,
+                    "T01_MIN_STOCK_WARN" => $minStockWarn
                 ];
                 $this->drug_model->createDrug($data_to_drug); // Insert and get drug ID
             }
@@ -94,13 +96,15 @@ class Drug extends Admin_Controller
         $drugs = $this->input->post("drugs");
         $tradeName = $this->input->post("tradeName");
         $minStock = $this->input->post("minStock");
+        $minStockWarn = $this->input->post("minStockWarn");
 
         try {
             // Update the drug details
             $data_to_update = [
                 "T01_DRUGS" => $drugs,
                 "T01_TRADE_NAME" => $tradeName,
-                "T01_MIN_STOCK" => $minStock
+                "T01_MIN_STOCK" => $minStock,
+                "T01_MIN_STOCK_WARN" => $minStockWarn
             ];
             $this->drug_model->updateDrug($drugId, $data_to_update);
 
